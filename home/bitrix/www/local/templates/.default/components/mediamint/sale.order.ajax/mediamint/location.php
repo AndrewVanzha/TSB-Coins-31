@@ -47,10 +47,40 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
     debugg('$location_id');
     debugg($location_id);
     //$item = \Bitrix\Sale\Location\TypeTable::getById($_REQUEST['ORDER_PROP_6'])->fetch();
+    $res = \Bitrix\Sale\Location\LocationTable::getList(array(
+        'filter' => array(
+            '=ID' => $location_id,
+            '=NAME.LANGUAGE_ID' => LANGUAGE_ID,
+        ),
+        'select' => array(
+            '*',
+            'NAME_RU' => 'NAME.NAME',
+            'TYPE_CODE' => 'TYPE.CODE'
+        ),
+    ));
+    while($item = $res->fetch()) { // для shops.php
+        //debugg($item);
+        $arResult["CITY_PLACE"]['ID'] = $item['CITY_ID'];
+        $arResult["CITY_PLACE"]['VALUE'] = $item['NAME_RU'];
+        $arResult["CITY_PLACE"]['TYPE'] = $item['TYPE_CODE'];  // CITY
+    }
+    debugg($arResult["CITY_PLACE"]);
+
+    /*
+     * в class.php
+        $ar_regions = [];
+        $ar_regions[4] = 'Центр';  //  переносить вручную из польз.свойства UF_SHOP_REGIONS
+        $ar_regions[5] = 'Северо-Запад';
+        $ar_regions[6] = 'Юг';
+        $ar_regions[7] = 'Поволжье';
+        $ar_regions[8] = 'Дальний Восток';
+        $arResult["REGION_ITEM"]['ID'] = 4;
+        $arResult["REGION_ITEM"]['VALUE'] = $ar_regions[4];
+
+
     $location_item = \Bitrix\Sale\Location\LocationTable::getById($location_id)->fetch(); // получаю выбранное место доставки
     debugg($location_item);
-
-    $res = \Bitrix\Sale\Location\LocationTable::getList(array(
+    $res = \Bitrix\Sale\Location\LocationTable::getList(array(  // нахожу регион выбранного города
         'filter' => array(
             '=ID' => array($location_item['REGION_ID']),
             '=PARENT.NAME.LANGUAGE_ID' => LANGUAGE_ID,
@@ -58,6 +88,8 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
             'TYPE_CODE' => 'COUNTRY_DISTRICT',
         ),
         'select' => array(
+            'ID',
+            'CODE',
             'PARENT.*',
             'NAME_RU' => 'PARENT.NAME.NAME',
             'TYPE_CODE' => 'PARENT.TYPE.CODE',
@@ -67,17 +99,18 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
     while($item = $res->fetch()) { // собираю магазины в регионе места доставки
         $region_item[] = $item;
     }
-    debugg($region_item);
-    debugg($region_item[0]['TYPE_NAME_RU']);
-    debugg($region_item[0]['NAME_RU']);
+    //debugg($region_item);
+    //debugg($region_item[0]['TYPE_NAME_RU']);
+    //debugg($region_item[0]['NAME_RU']);
     $arResult["REGION_ITEM"]['ID'] = 0; // нет магазина в регионе
     $arResult["REGION_ITEM"]['VALUE'] = $region_item[0]['NAME_RU']; // для shops.php
+    */
 }
+//debugg($location);
 ?>
 
 <?// echo '<pre>'; print_r($arResult); echo '</pre>';?>
 <?// debugg($arParams["TEMPLATE_LOCATION"]); ?>
-<?// debugg($location); ?>
 
 <div class = "ajorder-section">
 	<h4 class = "ajorder-section_header">Регион доставки</h4>
