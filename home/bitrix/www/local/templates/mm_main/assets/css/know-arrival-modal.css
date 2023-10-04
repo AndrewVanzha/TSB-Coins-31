@@ -1,0 +1,155 @@
+.know-about-arrival__inner-content
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    background-color: #F9FBFB;
+    border-radius: 4px;
+
+    padding: 50px;
+
+    width: 100%;
+    max-width: 500px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .3s;
+}
+@media screen and (max-width: 992px)
+{
+    .know-about-arrival__inner-content
+    {
+        background-color: transparent;
+        border: none;
+        padding: 20px;
+
+        max-width: 310px;
+    }
+}
+
+.know-about-arrival__inner-content.showed
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
+#mobile-close-know-arrival
+{
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 5;
+
+    display: none;
+}
+
+#mobile-close-know-arrival img
+{
+    width: 20px;
+}
+
+#upper-mobile-close-know-arrival
+{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+#upper-mobile-close-know-arrival img
+{
+    width: 20px;
+}
+
+@media screen and (max-width: 992px)
+{
+    #upper-mobile-close-know-arrival
+    {
+        display: none;
+    }
+    #mobile-close-know-arrival.showed
+    {
+        display: block;
+    }
+}
+
+.modal-know-arrival__title
+{
+    color: var(--blue-color);
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+
+    margin-bottom: 24px;
+
+    transition: opacity .3s;
+}
+
+.modal-know-arrival__title.hidden
+{
+    /*display: none;*/
+    opacity: 0;
+}
+
+.modal-know-arrival__form
+{
+    transition: opacity .3s;
+}
+
+.modal-know-arrival__form.hidden
+{
+    /*display: none;*/
+    opacity: 0;
+}
+
+.modal-know-arrival__form .input-elem
+{
+    width: 100%;
+}
+
+.know-arrival__submit-btn
+{
+    margin-top: 30px;
+}
+
+
+.success-message-wrapper
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .3s .3s;
+}
+
+.success-message-wrapper.showed
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.arrival-success-message__icon
+{
+    width: 20px;
+    margin: 0 auto 20px;
+}
+
+.arrival-success-message__text
+{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-align: center;
+
+    color: var(--blue-color);
+}

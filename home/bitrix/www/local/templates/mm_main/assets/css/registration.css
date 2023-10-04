@@ -1,0 +1,40 @@
+.form-change-outer {
+    --slide-trs-ln: .2s;
+    width: 100%;
+    border-bottom: 1px solid #E3E5E5;
+    margin-bottom: 29px;
+}
+
+.form-change-filter {
+    max-width: 226px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.form-change-filter  #form-change-line {
+    position: absolute;
+    bottom: -2px;
+    height: 3px;
+    width: 0;
+    left: 0;
+    background-color: #A58A57;
+    transition: all linear var(--slide-trs-ln);
+}
+.form-change-filter .form-change-filter__button {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #58666F;
+    transition: color linear var(--slide-trs-ln);
+}
+.form-change-filter .form-change-filter__button.active {
+    color: #202020;
+}
+#reg-form-submit {
+    cursor: pointer;
+}

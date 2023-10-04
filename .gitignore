@@ -72,6 +72,11 @@ ehthumbs.db
 *.css.map
 *.min.css
 *.min.js
+*.png
+*.gif
+*.svg
+*.jpg
+*.jpeg
 
 # архивы, включая многотомные
 *.zip

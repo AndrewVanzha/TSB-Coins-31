@@ -1,0 +1,128 @@
+.delivery-variants
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+@media screen and (max-width: 680px) 
+{
+    .delivery-variants
+    {
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+.delivery-variants__variant
+{
+    width: 100%;
+    
+    padding: 21px 27px 36px 27px;
+
+    border: 1px solid var(--gold-color);
+    border-radius: 12px;
+
+    box-shadow: 0 4px 36px rgba(0, 0, 0, 0.25);
+
+    margin-right: 30px;
+}
+@media screen and (max-width: 1200px) 
+{
+    .delivery-variants__variant
+    {
+        padding: 21px 34px 40px 27px;
+    }
+}
+@media screen and (max-width: 1200px) 
+{
+    .delivery-variants__variant
+    {
+        margin-right: 25px;
+
+        padding: 21px 28px 19px 23px;
+    }
+}
+@media screen and (max-width: 992px) 
+{
+    .delivery-variants__variant
+    {
+        margin-right: 20px;
+
+        padding: 26px 28px 19px 21px;
+    }
+}
+@media screen and (max-width: 680px) 
+{
+    .delivery-variants__variant
+    {
+        margin-right: 0;
+        margin-bottom: 30px;
+
+        padding: 26px 21px 25px 21px;
+    }
+}
+
+.delivery-variants .delivery-variants__variant:last-child
+{
+    margin-right: 0;
+}
+@media screen and (max-width: 680px) 
+{
+    .delivery-variants .delivery-variants__variant:last-child
+    {
+        margin-bottom: 0;
+    }
+}
+
+.delivery-variant__title
+{
+    color: var(--gold-color);
+
+    margin-bottom: 34px;
+}
+@media screen and (max-width: 992px) 
+{
+    .delivery-variant__title
+    {
+        margin-bottom: 24px;
+    }
+}
+
+.delivery-variant__description
+{
+    color: #FFFFFF;
+
+    margin-bottom: 30px;
+}
+@media screen and (max-width: 680px) 
+{
+    .delivery-variant__description
+    {
+        margin-bottom: 11px;
+    }
+}
+
+.delivery-variant__little-description,
+.delivery-variant__little-description a
+{
+    color: #C4C4C4;
+}
+
+.delivery-variant__little-description a
+{
+    font-family: "RF Dewi", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.002em;
+
+    transition: color .3s;
+}
+
+.delivery-variant__little-description a:hover
+{
+    color: var(--gold-color);
+}

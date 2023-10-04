@@ -1,0 +1,154 @@
+.mobile-search
+{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+
+    background-color: #E9ECEE;
+
+    opacity: 0;
+    pointer-events: none;
+
+    padding: 0 20px;
+
+    z-index: 4;
+
+    transition: opacity .5s;
+
+    padding-bottom: 40px;
+}
+
+.mobile-search.shown
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
+#close-mobile-search
+{
+    position: absolute;
+    right: 24px;
+    top: 24px;
+}
+
+.close-mobile-search__icon
+{
+    width: 30px;
+}
+
+.inner-mobile-search-wrapper
+{
+    margin-top: 120px;
+
+    max-width: 475px;
+    margin: 120px auto 0;
+}
+
+#mobile-search-input
+{
+    width: 100%;
+
+    background-color: transparent;
+    border-bottom: 2px solid #333;
+
+    padding-bottom: 12px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #333333;
+    border-radius: 0;
+}
+
+.inner-mobile-search-wrapper .mobile-search-results
+{
+    margin-top: 24px;
+}
+
+.inner-mobile-search-wrapper .search-results-element
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 14px;
+    width: 100%;
+}
+
+.inner-mobile-search-wrapper .search-results-element:first-child
+{
+    margin-top: 0;
+}
+
+.inner-mobile-search-wrapper .search-results-element:last-child
+{
+    position: relative;
+    padding-bottom: 14px;
+}
+.inner-mobile-search-wrapper .search-results-element:last-child::before
+{
+    content: "";
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+
+    height: 1px;
+    background-color: rgba(119, 119, 119, 0.2);
+}
+
+.inner-mobile-search-wrapper .search-results-img
+{
+    width: 60px;
+    margin-right: 11px;
+}
+
+.inner-mobile-search-wrapper .search-results-info
+{
+    border-bottom: 1px solid rgba(119, 119, 119, 0.2);
+    padding-bottom: 14px;
+
+    flex-grow: 1;
+}
+
+.inner-mobile-search-wrapper .search-results-element:last-child .search-results-info
+{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.inner-mobile-search-wrapper .search-results-name
+{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #202020;
+}
+
+.inner-mobile-search-wrapper .search-results-price
+{
+    margin-top: 6px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #222222;
+}
+
+.inner-mobile-search-wrapper .search-footer .mint-btn
+{
+    margin: 24px auto 0;
+}
