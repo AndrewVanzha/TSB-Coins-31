@@ -1,6 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/props_format.php");
 //debugg($templateFolder);
+debugg('location');
+//debugg($arResult["ORDER_PROP"]["USER_PROPS_Y"][6]);
+//debugg($arResult["ORDER_PROP"]["USER_PROPS_N"]['VARIANTS']);
 ?>
 
 <?// debugg($arResult["ORDER_PROP"]["USER_PROPS_Y"]); ?>
@@ -28,6 +31,49 @@ include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/props_format.php");
 <?usort($location, function($a, $b){
 	return ($a['SORT'] - $b['SORT']);
 });?>
+
+<?php
+$arLocalShops = [];
+if (\Bitrix\Main\Loader::includeModule('sale')) {
+    //debugg($_REQUEST);
+    //debugg($_POST);
+
+    $moscow_id = 129;
+    if ($_REQUEST['ORDER_PROP_6']) {
+        $location_id = $_REQUEST['ORDER_PROP_6'];
+    } else {
+        $location_id = $moscow_id;
+    }
+    debugg('$location_id');
+    debugg($location_id);
+    //$item = \Bitrix\Sale\Location\TypeTable::getById($_REQUEST['ORDER_PROP_6'])->fetch();
+    $location_item = \Bitrix\Sale\Location\LocationTable::getById($location_id)->fetch(); // получаю выбранное место доставки
+    debugg($location_item);
+
+    $res = \Bitrix\Sale\Location\LocationTable::getList(array(
+        'filter' => array(
+            '=ID' => array($location_item['REGION_ID']),
+            '=PARENT.NAME.LANGUAGE_ID' => LANGUAGE_ID,
+            '=PARENT.TYPE.NAME.LANGUAGE_ID' => LANGUAGE_ID,
+            'TYPE_CODE' => 'COUNTRY_DISTRICT',
+        ),
+        'select' => array(
+            'PARENT.*',
+            'NAME_RU' => 'PARENT.NAME.NAME',
+            'TYPE_CODE' => 'PARENT.TYPE.CODE',
+            'TYPE_NAME_RU' => 'PARENT.TYPE.NAME.NAME',
+        ),
+    ));
+    while($item = $res->fetch()) { // собираю магазины в регионе места доставки
+        $region_item[] = $item;
+    }
+    debugg($region_item);
+    debugg($region_item[0]['TYPE_NAME_RU']);
+    debugg($region_item[0]['NAME_RU']);
+    $arResult["REGION_ITEM"]['ID'] = 0; // нет магазина в регионе
+    $arResult["REGION_ITEM"]['VALUE'] = $region_item[0]['NAME_RU']; // для shops.php
+}
+?>
 
 <?// echo '<pre>'; print_r($arResult); echo '</pre>';?>
 <?// debugg($arParams["TEMPLATE_LOCATION"]); ?>
