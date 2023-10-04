@@ -1,0 +1,1 @@
+<a class="icon" href="mailto:coins.shop@tsbnk.ru" title="Написать нам по электронной почте" onclick="ga('send','event','email','clicked');yaCounter44820226.reachGoal('email');">coins.shop@tsbnk.ru</a>

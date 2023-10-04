@@ -1,0 +1,65 @@
+body main
+{
+    padding-bottom: 0;
+}
+
+.buyout-coins
+{
+    margin-top: 80px;
+}
+@media screen and (max-width: 992px) 
+{
+    .buyout-coins
+    {
+        margin-top: 50px;
+    }  
+}
+
+.dark-wrapper
+{
+    background-color: var(--dark-bg-page-color);
+
+    padding: 42px 0 80px;
+}
+@media screen and (max-width: 992px)
+{
+    .dark-wrapper
+    {
+        padding: 42px 0 50px;
+    }
+}
+
+.linked-detail-news
+{
+    margin-top: 80px;
+}
+
+.dark-wrapper .linked-detail-news__title
+{
+    color: var(--gold-color);
+}
+
+.linked-news-encyclopedia
+{
+    margin-top: 80px;
+}
+
+.dark-wrapper .linked-news-encyclopedia__title
+{
+    color: var(--gold-color);
+}
+
+.linked-coins
+{
+    margin-top: 80px;
+}
+@media screen and (max-width: 992px)
+{
+    .linked-coins
+    {
+        margin-top: 50px;
+    }
+}
+.content-container.content-container-mb {
+    margin-bottom: 70px;
+}

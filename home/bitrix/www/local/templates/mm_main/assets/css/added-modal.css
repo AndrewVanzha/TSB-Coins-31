@@ -1,0 +1,246 @@
+@media screen and (max-width: 992px) {
+    .know-arrival-bg.product-added-opened
+    {
+        background-color: #E9ECEE;
+        z-index: 5;
+    }
+}
+
+.product-added-modal__inner-wrapper
+{
+    /*position: absolute;*/
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    max-width: 750px;
+    background-color: #fff;
+
+    padding: 50px 67px 50px 50px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .4s;
+}
+@media screen and (max-width: 992px)
+{
+    .product-added-modal__inner-wrapper
+    {
+        background-color: transparent;
+        z-index: 6;
+
+        max-width: 350px;
+        padding: 0 20px;
+    }
+}
+
+.product-added-modal__inner-wrapper.showed
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
+#mobile-close-modal
+{
+    position: fixed;
+    top: 24px;
+    right: 24px;
+
+    display: none;
+    z-index: 5;
+}
+#mobile-close-modal img
+{
+    width: 20px;
+}
+@media screen and (max-height: 600px)
+{
+    #mobile-close-modal
+    {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+#upper-close-added-modal
+{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    z-index: 2;
+}
+@media screen and (max-width: 992px)
+{
+    #mobile-close-modal.showed
+    {
+        display: block;
+    }
+    #upper-close-added-modal
+    {
+        display: none;
+    }
+}
+
+#upper-close-added-modal img
+{
+    width: 20px;
+    height: 20px;
+}
+
+.added-modal-title
+{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: var(--blue-color);
+
+    margin-bottom: 55px;
+}
+@media screen and (max-width: 992px)
+{
+    .added-modal-title
+    {
+        text-align: center;
+        margin-bottom: 20px;
+
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+.coin-info
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+@media screen and (max-width: 992px)
+{
+    .coin-info
+    {
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.added-modal__coin__avatar
+{
+    width: 100%;
+    height: 100%;
+    max-width: 124px;
+    max-height: 124px;
+
+    margin-right: 21px;
+}
+@media screen and (max-width: 992px)
+{
+    .added-modal__coin__avatar
+    {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+}
+@media screen and (max-height: 600px)
+{
+    .added-modal__coin__avatar
+    {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+.added-modal__coin-name
+{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 23px;
+
+    color: #202020;
+
+    margin-bottom: 22px;
+}
+@media screen and (max-width: 992px)
+{
+    .added-modal__coin-name
+    {
+        text-align: center;
+        margin-bottom: 29px;
+
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+@media screen and (max-height: 600px)
+{
+    .added-modal__coin-name
+    {
+        margin-bottom: 10px;
+    }
+}
+
+.added-modal__coin-price
+{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+
+    color: #000000;
+}
+@media screen and (max-width: 992px)
+{
+    .added-modal__coin-price
+    {
+        text-align: center;
+
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+
+.added-modal__buttons-wrapper
+{
+    margin-top: 61px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+@media screen and (max-width: 992px)
+{
+    .added-modal__buttons-wrapper
+    {
+        margin-top: 30px;
+
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .added-modal__buttons-wrapper .mint-btn:first-child
+    {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-height: 600px)
+{
+    .added-modal__buttons-wrapper
+    {
+        margin-top: 15px;
+    }
+
+    .added-modal__buttons-wrapper .mint-btn:first-child
+    {
+        margin-bottom: 13px;
+    }
+}
