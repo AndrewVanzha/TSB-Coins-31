@@ -17,8 +17,35 @@ debugg('$_REQUEST BUYER_STORE');
 debugg($_REQUEST['BUYER_STORE']);
 debugg('arResult["BUYER_STORE"]');
 debugg($arResult["BUYER_STORE"]);
-?>
 
+$arResult["STORE_LIST_MDFD"] = [];  // $arResult["CITY_PLACE"]["VALUE"] - выбранный город
+foreach ($arResult["STORE_LIST"] as $ix=>$store_list) {
+    $city_name = str_replace(' ', '', $arResult["CITY_PLACE"]["VALUE"]);
+    $store_list_address = str_replace(' ', '', $store_list['ADDRESS']);
+    if (mb_strripos($store_list_address, $city_name)) {
+        $arResult["STORE_LIST_MDFD"][$ix] = $store_list;
+    }
+}
+debugg($arResult["STORE_LIST_MDFD"]);
+
+if ($_REQUEST['BUYER_STORE']) {
+    if ($_REQUEST['BUYER_STORE'] == 0) {
+        //debugg('BUYER_STORE = 0');
+        //debugg($arResult["STORE_LIST_MDFD"]);
+    } else {
+        debugg('$_REQUEST BUYER_STORE');
+        debugg($_REQUEST['BUYER_STORE']);
+        debugg('arResult["BUYER_STORE"]');
+        debugg($arResult["BUYER_STORE"]);
+        $shop_num = $_REQUEST['BUYER_STORE'];
+        if (!array_key_exists($shop_num, $arResult["STORE_LIST_MDFD"])) {
+            $arResult["BUYER_STORE"] = array_key_first($arResult["STORE_LIST_MDFD"]); // номер магазина с меньшим sort в регионе
+            debugg('arResult["BUYER_STORE"]');
+            debugg($arResult["BUYER_STORE"]);
+        }
+    }
+}
+?>
 <script>
 	function fShowStore(id, showImages, formWidth, siteId)
 	{
