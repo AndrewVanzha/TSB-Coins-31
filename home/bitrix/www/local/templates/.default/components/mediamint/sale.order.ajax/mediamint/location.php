@@ -66,10 +66,35 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
     }
     debugg($arResult["CITY_PLACE"]);
 
+// Инфоблок 23 Адреса магазинов:
+// добавить символьный код API shopAddresses
+// добавить свойство Город / ATT_CITY (Строка)
+// заполнить свойство Город во всех элементах инфоблока
+
+    $elements = \Bitrix\Iblock\Elements\ElementShopAddressesTable::getList([ // API = ShopAddresses
+        'select' => ['ID', 'NAME', 'ATT_CITY', 'SORT'],
+        'filter' => [
+            '=ACTIVE' => 'Y',
+            'IBLOCK_ID' => 23,
+        ],
+        'order' => ['SORT' => 'ASC'],
+    ])->fetchAll();
+    foreach ($elements as $key=>$element) {
+        //debugg($element);
+        if ($element['IBLOCK_ELEMENTS_ELEMENT_SHOP_ADDRESSES_ATT_CITY_VALUE']) {
+            $el_city['ID'] = $element['ID'];
+            $el_city['CITY'] = $element['IBLOCK_ELEMENTS_ELEMENT_SHOP_ADDRESSES_ATT_CITY_VALUE'];
+            $el_city['ADDRESS'] = $element['NAME'];
+            $arResult['CITY_ADDRESSES'][] = $el_city;
+        }
+        //debugg($element->getShopAddresses()->getValue());
+    }
+    //debugg($arResult['CITY_ADDRESSES']);
+
     /*
      * в class.php
         $ar_regions = [];
-        $ar_regions[4] = 'Центр';  //  переносить вручную из польз.свойства UF_SHOP_REGIONS
+        $ar_regions[4] = 'Центр';  //  переносить вручную из польз.свойства UF_SHOP_REGIONS (Магазин / Склады)
         $ar_regions[5] = 'Северо-Запад';
         $ar_regions[6] = 'Юг';
         $ar_regions[7] = 'Поволжье';
