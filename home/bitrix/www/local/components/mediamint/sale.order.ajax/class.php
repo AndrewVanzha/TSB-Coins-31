@@ -2530,7 +2530,7 @@ class SaleOrderAjax extends \CBitrixComponent
 
 		$arStore = array(); //print_r($arStoreId);
 		$dbList = CCatalogStore::GetList(
-			array("SORT" => "DESC", "ID" => "DESC"),
+			array("SORT" => "ASC", "ID" => "DESC"),
 			array("ACTIVE" => "Y", "ID" => $arStoreId, "ISSUING_CENTER" => "Y", "+SITE_ID" => SITE_ID),
 			false,
 			false,
@@ -2547,7 +2547,6 @@ class SaleOrderAjax extends \CBitrixComponent
 		}
 
 		$arResult["STORE_LIST"] = $arStore;
-        //print_r($arResult["STORE_LIST"]);
 
 		$arResult["DELIVERY_EXTRA"] = array();
 		$deliveryExtra = $this->request->get('DELIVERY_EXTRA');
