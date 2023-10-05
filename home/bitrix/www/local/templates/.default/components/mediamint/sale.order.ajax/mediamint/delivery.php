@@ -13,10 +13,6 @@ if (!in_array($arResult["CITY_PLACE"]['VALUE'], $ar_cities)) {
     $arResult["DELIVERY"][25]['CHECKED'] = 'Y';  // id=25
     unset($arResult["DELIVERY"][3]);  // id=3 - самовывоз убираю
 }
-debugg('$_REQUEST BUYER_STORE');
-debugg($_REQUEST['BUYER_STORE']);
-debugg('arResult["BUYER_STORE"]');
-debugg($arResult["BUYER_STORE"]);
 
 $arResult["STORE_LIST_MDFD"] = [];  // $arResult["CITY_PLACE"]["VALUE"] - выбранный город
 foreach ($arResult["STORE_LIST"] as $ix=>$store_list) {
@@ -28,21 +24,16 @@ foreach ($arResult["STORE_LIST"] as $ix=>$store_list) {
 }
 debugg($arResult["STORE_LIST_MDFD"]);
 
-if ($_REQUEST['BUYER_STORE']) {
-    if ($_REQUEST['BUYER_STORE'] == 0) {
-        //debugg('BUYER_STORE = 0');
-        //debugg($arResult["STORE_LIST_MDFD"]);
-    } else {
-        debugg('$_REQUEST BUYER_STORE');
-        debugg($_REQUEST['BUYER_STORE']);
+debugg('$_REQUEST BUYER_STORE');
+debugg($_REQUEST['BUYER_STORE']);
+debugg('arResult["BUYER_STORE"]');
+debugg($arResult["BUYER_STORE"]);
+if (isset($_REQUEST['BUYER_STORE'])) {
+    $shop_num = $_REQUEST['BUYER_STORE'];
+    if (!array_key_exists($shop_num, $arResult["STORE_LIST_MDFD"])) {
+        $arResult["BUYER_STORE"] = array_key_first($arResult["STORE_LIST_MDFD"]); // номер магазина с меньшим sort в регионе
         debugg('arResult["BUYER_STORE"]');
         debugg($arResult["BUYER_STORE"]);
-        $shop_num = $_REQUEST['BUYER_STORE'];
-        if (!array_key_exists($shop_num, $arResult["STORE_LIST_MDFD"])) {
-            $arResult["BUYER_STORE"] = array_key_first($arResult["STORE_LIST_MDFD"]); // номер магазина с меньшим sort в регионе
-            debugg('arResult["BUYER_STORE"]');
-            debugg($arResult["BUYER_STORE"]);
-        }
     }
 }
 ?>
