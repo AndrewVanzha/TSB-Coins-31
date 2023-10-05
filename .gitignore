@@ -3,37 +3,28 @@
 /home/bitrix/backup/
 /home/bitrix/mail.php
 /home/bitrix/testmail.php
+
 /home/bitrix/www/bitrix/
-/home/bitrix/www/upload/
-/home/bitrix/www/logs/
-/www/andreww1000.h1n.ru/up_blocks/
-/home/bitrix/www/andreww1000.h1n.ru/.DS_Store
+/home/bitrix/www/.DS_Store
 
-/www/b/bitrixsetup.php
-/www/b/bitrix/
-/www/b/upload/
-/www/b/up_blocks/
-/www/b/.DS_Store
+/home/bitrix/www/.Trash-1000/
+/home/bitrix/www/currency/
+/home/bitrix/www/temp/
+/home/bitrix/www/test*/
+/home/bitrix/www/zagruzka/
+/home/bitrix/www/turbo-img/
 
-
-
-/.Trash-1000/
-/currency/
-/temp/
-/test*/
-/zagruzka/
-/turbo-img/
-/bitrix/
-
-# конфиги PHPStorm
+# конфиги PHPStorm & VSC
 /.idea/
+/.vscode/
 
 # исключаем логи
-/local/php_interface/logs/
-/local/logs/
+/home/bitrix/www/local/php_interface/logs/
+/home/bitrix/www/logs/
 
 # исключаем загружаемые файлы
-/upload/
+/home/bitrix/www/upload/
+/www/andreww1000.h1n.ru/up_blocks/
 
 # различные системные папки и файлы хостингов и операционных систем
 /bin/
@@ -70,13 +61,22 @@ ehthumbs.db
 *.txt
 *.log
 *.css.map
-*.min.css
-*.min.js
+
 *.png
 *.gif
 *.svg
 *.jpg
 *.jpeg
+*.webp
+
+*.csv
+*.json
+*.pdf
+*.ttf
+*.woff
+*.woff2
+*.otf
+*.eot
 
 # архивы, включая многотомные
 *.zip
@@ -93,10 +93,10 @@ ehthumbs.db
 *.rar
 .hg
 .ftpconfig
+
+*.rtf
 *.doc
 *.docx
-*.pdf
-*.rtf
 *.xls
 *.xlsx
 *.ppt
