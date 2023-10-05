@@ -1,10 +1,15 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();?>
-<?// echo '<pre>'; print_r($arResult["STORE_LIST"]); echo '</pre>'; ?>
-<?// echo '<pre>'; print_r($arResult); echo '</pre>';?>
+<?php
+debugg('shops');
+//debugg($arResult["DELIVERY"]);
+//debugg($arResult["STORE_LIST"]);
+// echo '<pre>'; print_r($arResult); echo '</pre>';
+?>
 
 <?foreach ($arResult["DELIVERY"] as $key => $value):?>
     <? debugg('ZZZ_'.$key) ?>
-    <? echo '<pre>'; print_r($value); echo '</pre>'; ?>
+    <? //echo '<pre>'; print_r($value); echo '</pre>'; ?>
+    <? //debugg($value); ?>
 	<?if($value["CHECKED"] == "Y" && !empty($value["STORE"])):?>
 
 		<div class = "ajorder-section">
@@ -16,7 +21,8 @@
 					<div class = "ajorder-pickup-pages">
 						<?$page = 0;?>
 						<?$pageNum = 1;?>
-						<?foreach ($arResult["STORE_LIST"] as $k => $v):?>
+						<?//foreach ($arResult["STORE_LIST"] as $k => $v):?>
+						<?foreach ($arResult["STORE_LIST_MDFD"] as $k => $v):?>
 							<?if(!$page):?>
 								<div data-page = "<?=$pageNum?>" class = "ajorder-pickup-page active">
 							<?endif;?>
@@ -72,7 +78,8 @@
 								</div>
 							</div>
 							<?$page++;?>
-							<?if(count($arResult["STORE_LIST"]) == $page):?>
+							<?//if(count($arResult["STORE_LIST"]) == $page):?>
+							<?if(count($arResult["STORE_LIST_MDFD"]) == $page):?>
 								</div>
 								<?break;?>
 							<?endif;?>
@@ -88,7 +95,8 @@
 					<div class = "ajorder-pickup-prev disabled"></div>
 					<div class = "ajorder-pickup-nav">
 						<?for (
-							$i = 0; $i < ceil(count($arResult["STORE_LIST"]) / 3); $i++
+							//$i = 0; $i < ceil(count($arResult["STORE_LIST"]) / 3); $i++
+							$i = 0; $i < ceil(count($arResult["STORE_LIST_MDFD"]) / 3); $i++
 						) {?>
 							<div 
 							data-page = "<?=($i + 1)?>"
