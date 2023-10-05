@@ -1,14 +1,32 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 ?>
+<?php
+debugg('delivery');
+$ar_cities = [];
+foreach ($arResult['CITY_ADDRESSES'] as $item) {
+    $ar_cities[] = $item['CITY'];
+}
+$ar_cities = array_unique($ar_cities);
+debugg($ar_cities);
+if (!in_array($arResult["CITY_PLACE"]['VALUE'], $ar_cities)) {
+    debugg('N');
+    $arResult["DELIVERY"][25]['CHECKED'] = 'Y';  // id=25
+    unset($arResult["DELIVERY"][3]);  // id=3 - самовывоз убираю
+}
+debugg('$_REQUEST BUYER_STORE');
+debugg($_REQUEST['BUYER_STORE']);
+debugg('arResult["BUYER_STORE"]');
+debugg($arResult["BUYER_STORE"]);
+?>
 
 <script>
 	function fShowStore(id, showImages, formWidth, siteId)
 	{
-		// var strUrl = '<?=$templateFolder?>' + '/map.php';
+		// var strUrl = '<?//=$templateFolder?>' + '/map.php';
 		// var strUrlPost = 'delivery=' + id + '&showImages=' + showImages + '&siteId=' + siteId;
 
 		// var storeForm = new BX.CDialog({
-		// 			'title': '<?=GetMessage('SOA_ORDER_GIVE')?>',
+		// 			'title': '<?//=GetMessage('SOA_ORDER_GIVE')?>',
 		// 			head: '',
 		// 			'content_url': strUrl,
 		// 			'content_post': strUrlPost,
@@ -20,7 +38,7 @@
 
 		// var button = [
 		// 		{
-		// 			title: '<?=GetMessage('SOA_POPUP_SAVE')?>',
+		// 			title: '<?//=GetMessage('SOA_POPUP_SAVE')?>',
 		// 			id: 'crmOk',
 		// 			'action': function ()
 		// 			{
@@ -38,7 +56,7 @@
 	function GetBuyerStore()
 	{
 		BX('BUYER_STORE').value = BX('POPUP_STORE_ID').value;
-		//BX('ORDER_DESCRIPTION').value = '<?=GetMessage("SOA_ORDER_GIVE_TITLE")?>: '+BX('POPUP_STORE_NAME').value;
+		//BX('ORDER_DESCRIPTION').value = '<?//=GetMessage("SOA_ORDER_GIVE_TITLE")?>: '+BX('POPUP_STORE_NAME').value;
 		BX('store_desc').innerHTML = BX('POPUP_STORE_NAME').value;
 		BX.show(BX('select_store'));
 	}
