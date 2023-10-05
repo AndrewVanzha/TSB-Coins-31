@@ -58,7 +58,7 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
             'TYPE_CODE' => 'TYPE.CODE'
         ),
     ));
-    while($item = $res->fetch()) { // для shops.php
+    while($item = $res->fetch()) { // выбранный город для shops.php
         //debugg($item);
         $arResult["CITY_PLACE"]['ID'] = $item['CITY_ID'];
         $arResult["CITY_PLACE"]['VALUE'] = $item['NAME_RU'];
@@ -70,7 +70,7 @@ if (\Bitrix\Main\Loader::includeModule('sale')) {
 // добавить символьный код API shopAddresses
 // добавить свойство Город / ATT_CITY (Строка)
 // заполнить свойство Город во всех элементах инфоблока
-
+// делаю список городов, где есть магазины
     $elements = \Bitrix\Iblock\Elements\ElementShopAddressesTable::getList([ // API = ShopAddresses
         'select' => ['ID', 'NAME', 'ATT_CITY', 'SORT'],
         'filter' => [
