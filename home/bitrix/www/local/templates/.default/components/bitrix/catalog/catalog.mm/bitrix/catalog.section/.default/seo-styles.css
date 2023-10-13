@@ -1,0 +1,46 @@
+.catalog-description-text h2
+{
+    font-size: 28px;
+    line-height: 36px;
+
+    font-weight: normal;
+}
+
+@media screen and (max-width: 992px)
+{
+    .catalog-description-text h2
+    {
+        font-size: 22px;
+        line-height: 30px;
+    }
+}
+
+.catalog-description-text ul,
+.catalog-description-text p
+{
+    margin: 13px 0;
+}
+
+.last-wiewed-wrapper
+{
+    margin-top: 80px;
+}
+@media screen and (max-width: 992px)
+{
+    .last-wiewed-wrapper
+    {
+        margin-top: 50px;
+    }
+}
+
+.empty-catalog-title
+{
+    margin-top: 40px;
+    color: var(--blue-color);
+}
+@media screen and (max-width: 992px) {
+    .empty-catalog-title
+    {
+        margin-top: 0;
+    }
+}
