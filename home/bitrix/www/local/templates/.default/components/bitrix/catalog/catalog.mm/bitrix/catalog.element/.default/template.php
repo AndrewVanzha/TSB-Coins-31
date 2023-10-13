@@ -134,7 +134,7 @@ debugg('element template');
 </script>
 
 <div class="content-container">
-	<h2 class="heading-1 mobile-coin-name"><?=$arResult['NAME']?></h1>
+	<h2 class="heading-1 mobile-coin-name"><?=$arResult['NAME']?></h2>
 
     <section class="catalog-detail__top-bar">
         <div class="catalog-detail__top-bar-left">
@@ -374,7 +374,7 @@ debugg('element template');
                             <span class="price-wrapper"><?=number_format($arResult["PROPERTIES"]["REDEMPTION_PRICE"]["VALUE"], 0, ".", " ")?> &#8381;</span>
                         </p>
 
-                        <button onclick="openSellModal('<?=$arResult['ID'];?>')" class="mint-btn blue sell-coin">Продать</a>
+                        <button onclick="openSellModal('<?=$arResult['ID'];?>')" class="mint-btn blue sell-coin">Продать</button>
                     </div>
                 <?}?>
             </div>
