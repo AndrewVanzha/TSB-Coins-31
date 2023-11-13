@@ -22,12 +22,14 @@ foreach ($arResult["STORE_LIST"] as $ix=>$store_list) {
         $arResult["STORE_LIST_MDFD"][$ix] = $store_list;
     }
 }
-debugg($arResult["STORE_LIST_MDFD"]);
+//debugg($arResult["STORE_LIST_MDFD"]);
+//debugg('$arResult["DELIVERY"]');
+//debugg($arResult["DELIVERY"]);
 
-debugg('$_REQUEST BUYER_STORE');
-debugg($_REQUEST['BUYER_STORE']);
-debugg('arResult["BUYER_STORE"]');
-debugg($arResult["BUYER_STORE"]);
+//debugg('$_REQUEST BUYER_STORE');
+//debugg($_REQUEST['BUYER_STORE']);
+//debugg('arResult["BUYER_STORE"]');
+//debugg($arResult["BUYER_STORE"]);
 if (isset($_REQUEST['BUYER_STORE'])) {
     $shop_num = $_REQUEST['BUYER_STORE'];
     if (!array_key_exists($shop_num, $arResult["STORE_LIST_MDFD"])) {
