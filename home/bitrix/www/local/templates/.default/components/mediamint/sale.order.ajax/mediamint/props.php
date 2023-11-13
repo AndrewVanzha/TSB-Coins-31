@@ -2,6 +2,7 @@
 	include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/props_format.php");
 ?>
 <?php
+debugg('props');
 //echo '<pre>'; print_r($arResult["DELIVERY"]); echo '</pre>';
 ?>
 <div class = "section">
