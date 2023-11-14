@@ -1,5 +1,27 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();?>
+<?php
+use Bitrix\Main\Loader,
+    Bitrix\Highloadblock as HL,
+    Bitrix\Main\Entity;
 
+$arOfficesCashCard = [];
+Loader::includeModule("highloadblock");
+$hlblock = HL\HighloadBlockTable::getById(2)->fetch(); // highload = 2
+
+$entity = HL\HighloadBlockTable::compileEntity($hlblock);
+$entity_data_class = $entity->getDataClass();
+
+$result = $entity_data_class::getList(array(
+    "select" => array("*"),
+    "order" => array("ID" => "DESC"),
+    //"filter" => array("UF_STORE_PAYMENT"=>"Значение 1","UF_STORE_PAYMENT"=>'Значение 2') //Фильтрация выборки
+));
+while ($ar_list = $result->Fetch()) {
+    //debugg($ar_list);
+    $arOfficesCashCard[] = $ar_list['UF_STORE_PAYMENT'];
+}
+//debugg($arOfficesCashCard);
+?>
 <div class = "section">
 	<script>
 		function changePaySystem(param) {
@@ -76,7 +98,22 @@
 
 			<?uasort($arResult["PAY_SYSTEM"], "cmpBySort");?>
             <?
+            //debugg('$officeCashCard');
+            //debugg($arResult['OFFICE_CASH_CARD']);
             //debugg($arResult["PAY_SYSTEM"]);
+            if( in_array($arResult['OFFICE_CASH_CARD'] ,$arOfficesCashCard) ) {
+                for ($ii=0; $ii<count($arResult["PAY_SYSTEM"]); $ii++) {
+                    if ($arResult["PAY_SYSTEM"][$ii]['ID'] == 11) {  // Наличными в кассе банка - не нужна
+                        unset($arResult["PAY_SYSTEM"][$ii]);
+                    }
+                }
+            } else {
+                for ($ii=0; $ii<count($arResult["PAY_SYSTEM"]); $ii++) {
+                    if ($arResult["PAY_SYSTEM"][$ii]['ID'] == 16) {  // Наличный расчет или картой в кассе банка - не нужна
+                        unset($arResult["PAY_SYSTEM"][$ii]);
+                    }
+                }
+            }
             /*if ($arResult["DELIVERY"][3]['CHECKED'] == 'Y') {  // Самовывоз
                 for ($ii=0; $ii<count($arResult["PAY_SYSTEM"]); $ii++) {
                     debugg($arResult["PAY_SYSTEM"][$ii]['ID']);

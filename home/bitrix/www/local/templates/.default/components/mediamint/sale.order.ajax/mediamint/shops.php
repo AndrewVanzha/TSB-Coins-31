@@ -3,12 +3,25 @@
 debugg('shops');
 //debugg($arResult["DELIVERY"]);
 //debugg($arResult["STORE_LIST"]);
-// echo '<pre>'; print_r($arResult); echo '</pre>';
+//debugg($arResult["STORE_LIST_MDFD"]);
+
+/*
+$dbResult = CCatalogStore::GetList(
+    array(),
+    array('ACTIVE' => 'Y', 'ID' => '1'),
+    false,
+    false,
+    //array("UF_*")
+    array()
+    //array('UF_CAT_STORE_PAYMENT')
+);
+while ($dbResultStore = $dbResult->Fetch()) {
+    //debugg($dbResultStore);
+}*/
 ?>
 
 <?foreach ($arResult["DELIVERY"] as $key => $value):?>
     <? debugg('ZZZ_'.$key) ?>
-    <? //echo '<pre>'; print_r($value); echo '</pre>'; ?>
     <? //debugg($value); ?>
 	<?if($value["CHECKED"] == "Y" && !empty($value["STORE"])):?>
 
@@ -38,6 +51,7 @@ debugg('shops');
 									</span>
 								</div>
 								<div class = "ajorder-pickup-item-body">
+                                    <?// debugg($v); ?>
 									<div class = "ajorder-pickup-item-texts">
 										<div class = "name-and-type">
 											<div class = "name"><?=$v["ADDRESS"];?></div>
@@ -52,11 +66,13 @@ debugg('shops');
 												<span class ="ajorder-pickup-btn" data-id = "<?=$v['ID'];?>">
 													<?if($v['ID'] == $arResult["BUYER_STORE"]):?>
 														Выбрано
+                                                        <? $arResult['OFFICE_CASH_CARD'] = $v['ID']; ?>
 													<?else:?>
 														Выбрать
 													<?endif;?>
 												</span>
 											</div>
+                                            <?// debugg($arResult['OFFICE_CASH_CARD']); ?>
 											<div class ="info-right">
 												<a href ="tel:+<?=$v["PHONE"];?>" class ="phone"><?=$v["PHONE"];?></a>
 												<div class = "info-text">Описание: <?=$v["DESCRIPTION"]?>.</div>
