@@ -109,12 +109,22 @@ if (($price != $price_old) && ($price > 0 || $sale_percent > 0)) $sale = true;
 $new = false;
 if ( $arResult["PROPERTIES"]["NEW_PRODUCT"]["VALUE"] == 1 ) $new = true;
 
+
+//меньше 10 штук
+$small_count = false;
+if ( $arResult["PROPERTIES"]["ATT_SMALL_COUNT"]["VALUE"] == 'Y' ) $small_count = true;
+
 $statuses = [];
 if ($sale) {
     $statuses[] = 'Распродажа'; 
 }
 if ($new) {
     $statuses[] = 'Новинка'; 
+}
+
+$small_count_title = 'Меньше 10 шт';
+if ($small_count) {
+    $statuses[] = $small_count_title;
 }
 
 $in_stock = $price > 0 && $arResult["PROPERTIES"]["AVAILABLE"]["VALUE"] == 1;
@@ -128,6 +138,15 @@ foreach (
 }
 debugg('element template');
 ?>
+
+<style>
+    .catalog-detail__coin-status.is-small {
+        /*background-color: #A58A57;*/
+        background: linear-gradient(97.31deg, #E0C29B 0%, rgba(165, 138, 87, 0) 61.69%), linear-gradient(85.12deg, #A58A57 0%, #BEA272 97.71%);
+        color: #FFFFFF;
+        border-color: #A58A57;
+    }
+</style>
 <script>
     var arJSParams_<?=$arResult["ID"]?> = [];
     arJSParams_<?=$arResult["ID"]?> ["ID"] = '<?=$arResult['ID']?>';
@@ -141,7 +160,7 @@ debugg('element template');
             <?
                 foreach ($statuses as $key => $status) 
                 {?>
-                    <p class="catalog-detail__coin-status"><?=$status?></p>
+                    <p class="catalog-detail__coin-status <?=($status==$small_count_title)? 'is-small':'' ?>"><?=$status?></p>
                 <?}
             ?>
         </div>
@@ -209,7 +228,7 @@ debugg('element template');
 						<?
 						foreach ($statuses as $key => $status)
 						{?>
-							<p class="catalog-detail__coin-status"><?=$status?></p>
+                            <p class="catalog-detail__coin-status <?=($status==$small_count_title)? 'is-small':'' ?>"><?=$status?></p>
 						<?}
 						?>
 					</div>

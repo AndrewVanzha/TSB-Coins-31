@@ -31,8 +31,18 @@ function getUserDesired($userId) {
 }
 $desiredArr = getUserDesired($currUserId);
 
+debugg('bitrix:catalog.section/.default');
 
 if (!empty($arResult['ITEMS'])): ?>
+<style>
+    .coin-item__status.is-small {
+        /*background-color: #A58A57;*/
+        background: linear-gradient(97.31deg, #E0C29B 0%, rgba(165, 138, 87, 0) 61.69%), linear-gradient(85.12deg, #A58A57 0%, #BEA272 97.71%);
+        color: #FFFFFF;
+        border-color: #A58A57;
+    }
+</style>
+
 <div 
     class="catalog-coins-items <?=($_COOKIE['view'] == "list" ? 'list' : 'grid')?>">
     <?
@@ -85,6 +95,10 @@ if (!empty($arResult['ITEMS'])): ?>
             $new = false;
             if ( $arItem["PROPERTIES"]["NEW_PRODUCT"]["VALUE"] == 1 ) $new = true;
 
+            //меньше 10 штук
+            $small_count = false;
+            if ( $arItem["PROPERTIES"]["ATT_SMALL_COUNT"]["VALUE"] == 'Y' ) $small_count = true;
+
             // есть в лайках
             $liked = in_array($arItem['ID'], $desiredArr);
 
@@ -136,6 +150,9 @@ if (!empty($arResult['ITEMS'])): ?>
                         )?>
                         <?=(
                             $new ? '<p class="coin-item__status is-new">Новинка</p>' : ''
+                        )?>
+                        <?=(
+                            $small_count ? '<p class="coin-item__status is-small">Меньше 10 шт</p>' : ''
                         )?>
                     </div>
                     <button 
