@@ -109,6 +109,7 @@ if (($price != $price_old) && ($price > 0 || $sale_percent > 0)) $sale = true;
 $new = false;
 if ( $arResult["PROPERTIES"]["NEW_PRODUCT"]["VALUE"] == 1 ) $new = true;
 
+
 //меньше 10 штук
 $small_count = false;
 if ( $arResult["PROPERTIES"]["ATT_SMALL_COUNT"]["VALUE"] == 'Y' ) $small_count = true;
@@ -120,6 +121,7 @@ if ($sale) {
 if ($new) {
     $statuses[] = 'Новинка'; 
 }
+
 $small_count_title = 'Меньше 10 шт';
 if ($small_count) {
     $statuses[] = $small_count_title;
@@ -136,6 +138,7 @@ foreach (
 }
 debugg('element template');
 ?>
+
 <style>
     .catalog-detail__coin-status.is-small {
         /*background-color: #A58A57;*/

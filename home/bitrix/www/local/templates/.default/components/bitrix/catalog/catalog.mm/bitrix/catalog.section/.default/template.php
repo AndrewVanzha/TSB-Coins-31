@@ -30,6 +30,7 @@ function getUserDesired($userId) {
     }
 }
 $desiredArr = getUserDesired($currUserId);
+
 debugg('bitrix:catalog.section/.default');
 
 if (!empty($arResult['ITEMS'])): ?>
@@ -41,6 +42,7 @@ if (!empty($arResult['ITEMS'])): ?>
         border-color: #A58A57;
     }
 </style>
+
 <div 
     class="catalog-coins-items <?=($_COOKIE['view'] == "list" ? 'list' : 'grid')?>">
     <?
