@@ -200,6 +200,8 @@ $topMargin = $curentPage === '/';
         window.dataLayer = window.dataLayer || [];
     </script>
     <?/*--- /Yandex.Metrika counter ---*/?>
+    <?/*--- https://help.cloud.just-ai.com/aimylogic/publication_channels/chat_widget/ ---*/?>
+    <script src="https://bot.jaicp.com/chatwidget/gdpmXmGJ:088ac0039c10791636abc6a20af2b595c5148384/justwidget.js?force=true" async></script>
 </head>
 <body>
     <!-- No script warning -->
