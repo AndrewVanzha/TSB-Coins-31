@@ -1,20 +1,12 @@
 <?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/reports/sale_report/admin_step.php");
+/*
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("report");
 ?>
 <?php
 CModule::IncludeModule("sale");
 use Bitrix\Sale;
-
-function debugg($data)
-{
-    global $USER;
-    if($USER->GetID() == 107) {
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
-    }
-}
 
 $arFilter = Array();
 $arOrders = array();
@@ -33,5 +25,5 @@ while ($ar_sales = $db_sales->Fetch()) {
     $ii += 1;
 }
 debugg($arOrders);
-?>
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+*/?>
+<?//require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

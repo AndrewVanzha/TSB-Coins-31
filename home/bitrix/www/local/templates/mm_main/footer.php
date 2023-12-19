@@ -122,6 +122,11 @@
                         <div class="weekdays">
                             <p>Пн. - Пт. 09:00-18:00</p>
                             <p>Сб. - Вс. выходные</p>
+                            <? if($arUser['ID'] == 3814 || $arUser['ID'] == 4556) : //  ?>
+                                <p class="">
+                                    <a href="/reports/sale_report/" class="" style="color: aqua" target="_blank">sales</a>
+                                </p>
+                            <? endif; ?>
                         </div>
                     </div>
 
