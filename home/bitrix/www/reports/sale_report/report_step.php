@@ -5,6 +5,8 @@
 // https://maxyss.ru/blog/Work_code/zakaz-na-d7-poluchit-polya-izmenit-polya-sokhranit/
 // https://know-online.com/post/bitrix-order
 
+use Debugg\Oop\Dvlp;
+
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_before.php");
 $APPLICATION->SetTitle("Генератор отчета по заказам");
 CJSCore::Init(array("jquery"));
@@ -164,6 +166,7 @@ foreach ($arOrders as $kk=>$order) {
 //echo '<pre>';print_r($arOrders);echo '</pre>';
 
 //file_put_contents("/home/bitrix/www" . '/reports/a_$arOrders.json', json_encode($arOrders));
+Dvlp::logger('arOrders', $arOrders);
 $className = \Bitrix\Iblock\Iblock::wakeUp(6)->getEntityDataClass(); // Каталог монет
 //echo '<pre>';print_r($className);echo '</pre>';
 \Bitrix\Iblock\Iblock::wakeUp(6)->getEntityDataClass(); // Каталог монет

@@ -45,6 +45,13 @@ foreach( [
 }
 unset($filePath);
 
+CModule::AddAutoloadClasses(
+    '', // не указываем имя модуля
+    array(
+        // ключ - имя класса, значение - путь относительно корня сайта к файлу с классом
+        '\debugg\oop\dvlp' => "/local/php_interface/debugg.oop/dvlp.php",
+    )
+);
 if (!function_exists("debugg")) {
     function debugg($data)
     {

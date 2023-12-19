@@ -1,13 +1,15 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 ?>
 <?php
-debugg('delivery');
+use Debugg\Oop\Dvlp;
+
+Dvlp::debugg('delivery');
 $ar_cities = [];
 foreach ($arResult['CITY_ADDRESSES'] as $item) {
     $ar_cities[] = $item['CITY'];
 }
 $ar_cities = array_unique($ar_cities);
-debugg($ar_cities);
+Dvlp::debugg($ar_cities);
 if (!in_array($arResult["CITY_PLACE"]['VALUE'], $ar_cities)) {
     debugg('N');
     $arResult["DELIVERY"][25]['CHECKED'] = 'Y';  // id=25
@@ -22,20 +24,20 @@ foreach ($arResult["STORE_LIST"] as $ix=>$store_list) {
         $arResult["STORE_LIST_MDFD"][$ix] = $store_list;
     }
 }
-//debugg($arResult["STORE_LIST_MDFD"]);
-//debugg('$arResult["DELIVERY"]');
-//debugg($arResult["DELIVERY"]);
+//Dvlp::debugg($arResult["STORE_LIST_MDFD"]);
+//Dvlp::debugg('$arResult["DELIVERY"]');
+//Dvlp::debugg($arResult["DELIVERY"]);
 
-//debugg('$_REQUEST BUYER_STORE');
-//debugg($_REQUEST['BUYER_STORE']);
-//debugg('arResult["BUYER_STORE"]');
-//debugg($arResult["BUYER_STORE"]);
+//Dvlp::debugg('$_REQUEST BUYER_STORE');
+//Dvlp::debugg($_REQUEST['BUYER_STORE']);
+//Dvlp::debugg('arResult["BUYER_STORE"]');
+//Dvlp::debugg($arResult["BUYER_STORE"]);
 if (isset($_REQUEST['BUYER_STORE'])) {
     $shop_num = $_REQUEST['BUYER_STORE'];
     if (!array_key_exists($shop_num, $arResult["STORE_LIST_MDFD"])) {
         $arResult["BUYER_STORE"] = array_key_first($arResult["STORE_LIST_MDFD"]); // номер магазина с меньшим sort в регионе
-        debugg('arResult["BUYER_STORE"]');
-        debugg($arResult["BUYER_STORE"]);
+        Dvlp::debugg('arResult["BUYER_STORE"]');
+        Dvlp::debugg($arResult["BUYER_STORE"]);
     }
 }
 ?>
@@ -228,7 +230,7 @@ if (isset($_REQUEST['BUYER_STORE'])) {
 								<?endif;?>
 
 								<div class = "bx_element ajorder-radio js-delivery-element">
-                                    <? debugg('ddd2_'.$arDelivery["ID"]) ?>
+                                    <? Dvlp::debugg('ddd2_'.$arDelivery["ID"]) ?>
 									<input type = "radio"id = "ID_DELIVERY_ID_<?= $arDelivery["ID"] ?>" name = "<?=htmlspecialcharsbx($arDelivery["FIELD_NAME"])?>" value = "<?= $arDelivery["ID"] ?>"<?if ($arDelivery["CHECKED"] == "Y") echo " checked";?> onclick = "submitForm();">
                                     <label for = "ID_DELIVERY_ID_<?=$arDelivery["ID"]?>" <?=$clickHandler?>>
 										<?if (count($arDelivery["LOGOTIP"]) > 0):?>
@@ -250,9 +252,9 @@ if (isset($_REQUEST['BUYER_STORE'])) {
 							<?endif;?>
 						<?endforeach;?>
 					</div>
-                    <? //debugg($arResult["STORE_LIST"]); ?>
+                    <? //Dvlp::debugg($arResult["STORE_LIST"]); ?>
 					<div class = "ajorder-current-radio-info">
-                        <? //debugg($arResult["DELIVERY"]); ?>
+                        <? //Dvlp::debugg($arResult["DELIVERY"]); ?>
 						<?foreach ($arResult["DELIVERY"] as $k => $v):?>
 							<?if($v["CHECKED"] == "Y"):?>
 								<div class = "ajorder-current-radio-text">
